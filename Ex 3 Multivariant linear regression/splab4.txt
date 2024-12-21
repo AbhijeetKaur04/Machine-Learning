@@ -1,0 +1,54 @@
+%22106044
+% Define the sequences
+A = [1, 2, 3, 4];
+B = [4, 3, 2, 1];
+
+% Length of sequences
+N1 = length(A);
+N2 = length(B);
+
+% Length of the resulting sequence
+N = N1 + N2 - 1;
+
+% Initialize the result sequence with zeros
+y = zeros(1, N);
+
+% Perform convolution manually
+for n = 1:N
+    for k = 1:N1
+        if (n-k+1 > 0) && (n-k+1 <= N2)
+            y(n) = y(n) + A(k) * B(n-k+1);
+        end
+    end
+end
+
+% Display the sequences
+disp('Sequence A:');
+disp(A);
+disp('Sequence B:');
+disp(B);
+
+% Display the result of the convolution
+disp('The result of the linear convolution is:');
+disp(y);
+
+% Plot the sequences and the convolution result
+figure;
+subplot(3,1,1);
+stem(A, 'filled');
+title('Sequence A (22106044)');
+xlabel('n');
+ylabel('A[n]');
+
+subplot(3,1,2);
+stem(B, 'filled');
+title('Sequence B (22106044)');
+xlabel('n');
+ylabel('B[n]');
+
+subplot(3,1,3);
+stem(y, 'filled');
+title('Linear Convolution (22106044)');
+xlabel('n');
+ylabel('y[n]');
+

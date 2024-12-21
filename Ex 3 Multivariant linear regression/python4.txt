@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the sequences
+c = np.array([2, 4, 6, 8])
+d = np.array([8, 6, 4])
+
+# Determine the length for zero-padding
+n = max(len(c), len(d))
+
+# Pad the shorter sequence with zeros
+d_padded = np.pad(d, (0, n - len(d)), 'constant')
+
+# Perform circular convolution using FFT
+C = np.fft.fft(c, n)
+D = np.fft.fft(d_padded, n)
+circular_conv = np.fft.ifft(C * D).real
+
+# Generate the graph
+plt.figure()
+plt.stem(range(n), circular_conv, 'b', markerfmt='ob', basefmt='r-')
+plt.title('Circular Convolution with Zero Padding (22106044)')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.grid(True)
+plt.show()

@@ -1,0 +1,20 @@
+% Define the sequences
+c = [2, 4, 6, 8];
+d = [8, 6, 4];
+
+% Determine the length of the longer sequence
+n = max(length(c), length(d));
+
+% Pad the shorter sequence with zeros
+d_padded = [d, zeros(1, n - length(d))];
+
+% Perform circular convolution
+circular_conv = cconv(c, d_padded, n);
+
+% Generate the graph
+figure;
+stem(0:n-1, circular_conv, 'filled');
+title('Circular Convolution with Zero Padding (22106044)');
+xlabel('Index');
+ylabel('Value');
+grid on;

@@ -1,0 +1,33 @@
+% Parameters
+L = 50;          % Length of the wave
+A = 5;           % Peak value
+N = 14;          % Period
+dutyCycle = 60;  % Duty cycle in percentage
+
+% Generate time indices
+t = 0:L-1;
+
+% Generate the sawtooth wave
+sawtoothWave = A * sawtooth(2 * pi * t / N, dutyCycle / 100);
+
+% Generate the square wave
+squareWave = A * square(2 * pi * t / N, dutyCycle);
+
+% Plot the sawtooth wave
+figure;
+subplot(2,1,1); % Create a subplot for the sawtooth wave
+plot(t, sawtoothWave, 'LineWidth', 1.5);
+grid on;
+title(' ROLL NO: 22106044,Sawtooth Wave');
+xlabel('Sample Index');
+ylabel('Amplitude');
+ylim([-A A]); % Set the y-axis limits to match the peak values
+
+% Plot the square wave
+subplot(2,1,2); % Create a subplot for the square wave
+plot(t, squareWave, 'LineWidth', 1.5);
+grid on;
+title('ROLL NO: 22106044,Square Wave');
+xlabel('Sample Index');
+ylabel('Amplitude');
+ylim([-A A]); % Set the y-axis limits to match the peak values

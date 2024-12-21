@@ -1,0 +1,41 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import sawtooth, square
+
+# Parameters
+L = 50          # Length of the wave
+A = 5           # Peak value
+N = 14          # Period
+duty_cycle = 60 # Duty cycle in percentage
+
+# Generate time indices
+t = np.arange(L)
+
+# Generate the sawtooth wave
+sawtooth_wave = A * sawtooth(2 * np.pi * t / N, duty_cycle / 100)
+
+# Generate the square wave
+square_wave = A * square(2 * np.pi * t / N, duty_cycle / 100)
+
+# Plot the sawtooth wave
+plt.figure(figsize=(10, 6))
+
+plt.subplot(2, 1, 1)
+plt.plot(t, sawtooth_wave, 'b-', linewidth=1.5)
+plt.grid(True)
+plt.title('22106044 Sawtooth Wave')
+plt.xlabel('Sample Index')
+plt.ylabel('Amplitude')
+plt.ylim([-A, A])  # Set the y-axis limits to match the peak values
+
+# Plot the square wave
+plt.subplot(2, 1, 2)
+plt.plot(t, square_wave, 'r-', linewidth=1.5)
+plt.grid(True)
+plt.title('22106044 Square Wave')
+plt.xlabel('Sample Index')
+plt.ylabel('Amplitude')
+plt.ylim([-A, A])  # Set the y-axis limits to match the peak values
+
+plt.tight_layout()
+plt.show()

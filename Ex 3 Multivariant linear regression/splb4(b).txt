@@ -1,0 +1,15 @@
+% Define the sequences
+x = [5, 6, 7, 8];
+y = [8, 7, 6, 5];
+
+% Perform circular convolution
+n = length(x); % The length of the sequences
+circular_conv = cconv(x, y, n);
+
+% Generate the graph
+figure;
+stem(0:n-1, circular_conv, 'filled');
+title('Circular Convolution (22106044)');
+xlabel('Index');
+ylabel('Value');
+grid on;
